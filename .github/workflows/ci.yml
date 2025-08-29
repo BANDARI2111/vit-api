@@ -4,9 +4,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -14,14 +14,14 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x] # Use a stable LTS version
+        node-version: [18.x]
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4  # Using the latest stable version
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v4 # Using the latest stable version
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
